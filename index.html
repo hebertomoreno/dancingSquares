@@ -24,55 +24,29 @@
 				return "#"+rgbR+rgbG+rgbB;
 			}
 
-			/*function animateIN() {
-				for(i=0;i<squares.length;i++) {
-					squares[i].stop().animate({
-						transform:"R"+roti2+","+squares[i].i+","+squares[i].j,
-						width:200,
-						height:200
-					},1000, function() {
-						roti2+=11;
-						animateOUT();
-
-					});
-				}
-			}*/
-
 			function animateIN() {
-					sqGroup.selectAll(".sqJ").animate({
+				sqGroup.selectAll(".sqJ").animate({
+					transform:"R"+roti2,
+					width:Math.random()*300,
+					height:Math.random()*300,
+					fill: randColor()
+				},3000, function() {
+					roti2+=Math.random()*1080;
+					sqGroup.selectAll(".sqJ")
+					.animate({
 						transform:"R"+roti2,
 						width:Math.random()*300,
-						height:Math.random()*300
-					},3000, function() {
+						height:Math.random()*300,
+						fill: randColor()
+					},2000,function() {
 						roti2+=Math.random()*1080;
-						sqGroup.selectAll(".sqJ")
-						.animate({
-							transform:"R"+roti2,
-							width:Math.random()*300,
-							height:Math.random()*300
-						},2000,function() {
-							roti2+=Math.random()*1080;
-							animateIN();
-						});
+						animateIN();
 					});
-					sqGroup.selectAll(".sqJ")
-							.animate({
-								fill: "#FFFFFF"
-							},120000);
+				});
 			}
-			/*function animateOUT() {
-					sqGroup.selectAll(".sqJ")
-						.animate({
-							transform:"R"+roti2,
-							width:Math.random()*300,
-							height:Math.random()*300
-						},2000,function() {
-							roti2+=Math.random()*1080;
-							animateIN();
-						});
-			}*/
-			for(j=100;j<=1000;j+=Math.random()*150) {
-				for(i=100;i<=700;i+=Math.random()*500) {
+
+			for(j=100;j<=1000;j+=80) {
+				for(i=100;i<=700;i+=80) {
 					squares[cont] = s.rect(j,i,20,20);
 					sqGroup.add(squares[cont]);
 					squares[cont].j = j;
@@ -82,7 +56,8 @@
 						fill: "#000000",
 						stroke: "#000",
 						strokeWidth: 3,
-						class:"sqJ"
+						class:"sqJ",
+						fillOpacity:1
 					});
 					squares[cont].transform("r"+roti+",j,i");
 					roti+=Math.random()*9;
@@ -90,7 +65,6 @@
 					cont++;
 				}
 			}
-			sqGroup.drag();
 			console.log(sqGroup);
 			animateIN();
 		</script>
