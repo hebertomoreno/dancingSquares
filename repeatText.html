@@ -1,0 +1,27 @@
+<html>
+	<head>
+		<link href="https://fonts.googleapis.com/css?family=Montserrat|Oswald" rel="stylesheet">
+		<script src="snap/dist/snap.svg-min.js"></script>
+	</head>
+	<body>
+		<script>
+			var s = Snap(343,340);
+			//var resiText;
+			for(j=-500;j<=1200;j+=40) {
+					var resiText = s.text(j,j+100,"RESILIENCE Pt.2");
+					resiText.attr({
+						fill:"0000FF",
+						fontSize:40,
+						fontFamily: "Montserrat"
+					});
+					resiText.drag();
+			}
+			var nikText = s.text(20,300,"by Nikolas Murdock");
+			nikText.attr({
+				fill:"FF00FF",
+				fontSize:20,
+				fontFamily: "Montserrat"
+			});	
+		</script>
+	</body>
+</html>

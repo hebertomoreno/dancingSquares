@@ -1,0 +1,104 @@
+<html>
+	<head>
+		<title>snap SVG</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="https://fonts.googleapis.com/css?family=Montserrat|Oswald" rel="stylesheet">
+		<script src="snap/dist/snap.svg-min.js"></script>
+	</head>
+	<body>
+		<script>
+			var s = Snap();
+			var sqGroup = s.g();
+			var roti = 0;
+			var roti2 = 3;
+			var bigSquare;
+			var squares = [0];
+			cont = 0;
+			function randColor() {
+				var rgbR = Math.round(Math.random() * 255);
+				var rgbR = rgbR.toString(16);
+				var rgbG = Math.round(Math.random() * 255);
+				var rgbG = rgbG.toString(16);
+				var rgbB = Math.round(Math.random() * 255);
+				var rgbB = rgbG.toString(16);
+				return "#"+rgbR+rgbG+rgbB;
+			}
+
+			/*function animateIN() {
+				for(i=0;i<squares.length;i++) {
+					squares[i].stop().animate({
+						transform:"R"+roti2+","+squares[i].i+","+squares[i].j,
+						width:200,
+						height:200
+					},1000, function() {
+						roti2+=11;
+						animateOUT();
+
+					});
+				}
+			}*/
+
+			function animateIN() {
+					sqGroup.selectAll(".sqJ").animate({
+						transform:"R"+roti2,
+						width:Math.random()*500,
+						height:Math.random()*500
+					},1000, function() {
+						roti2+=Math.random()*88;
+						animateOUT();
+					});
+			}
+
+			/*function animateOUT() {
+				for(i=0;i<squares.length;i++) {
+					squares[i].stop().animate({
+						transform:"R"+roti2+","+squares[i].j+","+squares[i].i,
+						width:0,
+						height:0
+					},1000,function() {
+						roti2+=32;
+						animateIN();
+					});
+				}
+			}*/
+			function animateOUT() {
+					sqGroup.selectAll(".sqJ")
+						.animate({
+							transform:"R"+roti2,
+							width:Math.random()*100,
+							height:Math.random()*100
+						},1000,function() {
+							roti2+=Math.random()*58;
+							animateIN();
+						});
+			}
+			for(j=100;j<=1000;j+=110) {
+				for(i=100;i<=700;i+=110) {
+					squares[cont] = s.rect(j,i,20,20);
+					sqGroup.add(squares[cont]);
+					squares[cont].j = j;
+					squares[cont].i = i;
+					squares[cont].attr({
+						//fill: randColor(),
+						fill: "#FF2536",
+						stroke: "#000",
+						strokeWidth: 3,
+						class:"sqJ"
+					});
+					squares[cont].transform("r"+roti+",j,i");
+					roti+=Math.random()*9;
+					squares[cont].drag();
+					cont++;
+				}
+			}
+			/*sqGroup.selectAll(".sqJ")
+				.animate({
+						//transform:"R"+roti2,
+						width:200,
+						height:200
+			},3000);*/
+			console.log(sqGroup);
+			animateIN();
+		</script>
+	</body>
+</html>
