@@ -41,10 +41,10 @@
 			function animateIN() {
 					sqGroup.selectAll(".sqJ").animate({
 						transform:"R"+roti2,
-						width:Math.random()*500,
-						height:Math.random()*500
-					},1000, function() {
-						roti2+=Math.random()*88;
+						width:Math.random()*300,
+						height:Math.random()*300
+					},3000, function() {
+						roti2+=Math.random()*1080;
 						animateOUT();
 					});
 			}
@@ -65,15 +65,15 @@
 					sqGroup.selectAll(".sqJ")
 						.animate({
 							transform:"R"+roti2,
-							width:Math.random()*100,
-							height:Math.random()*100
-						},1000,function() {
-							roti2+=Math.random()*58;
+							width:Math.random()*300,
+							height:Math.random()*300
+						},2000,function() {
+							roti2+=Math.random()*1080;
 							animateIN();
 						});
 			}
-			for(j=100;j<=1000;j+=110) {
-				for(i=100;i<=700;i+=110) {
+			for(j=100;j<=1000;j+=150) {
+				for(i=100;i<=700;i+=150) {
 					squares[cont] = s.rect(j,i,20,20);
 					sqGroup.add(squares[cont]);
 					squares[cont].j = j;
@@ -87,16 +87,11 @@
 					});
 					squares[cont].transform("r"+roti+",j,i");
 					roti+=Math.random()*9;
-					squares[cont].drag();
+					
 					cont++;
 				}
 			}
-			/*sqGroup.selectAll(".sqJ")
-				.animate({
-						//transform:"R"+roti2,
-						width:200,
-						height:200
-			},3000);*/
+			sqGroup.drag();
 			console.log(sqGroup);
 			animateIN();
 		</script>
