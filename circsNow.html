@@ -26,17 +26,13 @@
 
 			function animateIN() {
 				sqGroup.selectAll(".sqJ").animate({
-					transform:"R"+roti2,
-					width:Math.random()*300,
-					height:Math.random()*300,
+					r:Math.random()*100,
 					fill: randColor()
 				},3000, function() {
 					roti2+=Math.random()*1080;
 					sqGroup.selectAll(".sqJ")
 					.animate({
-						transform:"R"+roti2,
-						width:Math.random()*300,
-						height:Math.random()*300,
+						r:Math.random()*100,
 						fill: randColor()
 					},2000,function() {
 						roti2+=Math.random()*1080;
@@ -45,9 +41,9 @@
 				});
 			}
 
-			for(j=50;j<=1000;j+=80) {
-				for(i=50;i<=700;i+=80) {
-					squares[cont] = s.rect(j,i,20,20);
+			for(j=-50;j<=2000;j+=80) {
+				for(i=-50;i<=2000;i+=80) {
+					squares[cont] = s.circle(j,i,0);
 					sqGroup.add(squares[cont]);
 					squares[cont].j = j;
 					squares[cont].i = i;
